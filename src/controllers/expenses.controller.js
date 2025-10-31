@@ -11,7 +11,7 @@ const getAll = async (req, res) => {
   }
 
   if (categories) {
-    expenses = expenses.filter((e) => e.category === categories);
+    expenses = expenses.filter((e) => e.categoryId === categories);
   }
 
   if (from) {
@@ -52,14 +52,14 @@ const getExpense = async (req, res) => {
 
 // Create new expense
 const createExpense = async (req, res) => {
-  const { userId, spentAt, title, amount, category, note } = req.body;
+  const { userId, spentAt, title, amount, categoryId, note } = req.body;
 
   if (
-    typeof +userId !== 'number' ||
+    Number.isNaN(+userId) ||
     typeof spentAt !== 'string' ||
     typeof title !== 'string' ||
     typeof amount !== 'number' ||
-    typeof category !== 'string' ||
+    typeof categoryId !== 'number' ||
     typeof note !== 'string' ||
     !(await userService.getUser(+userId))
   ) {

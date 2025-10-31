@@ -9,7 +9,7 @@ const createExpenses = async ({
   spentAt,
   title,
   amount,
-  category,
+  categoryId,
   note,
 }) => {
   return Expense.create({
@@ -17,7 +17,7 @@ const createExpenses = async ({
     spentAt,
     title,
     amount: Number(amount),
-    category,
+    categoryId: Number(categoryId),
     note,
   });
 };

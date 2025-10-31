@@ -8,9 +8,9 @@ const categoryRoutes = require('./routes/category.route');
 const { resetUsers } = require('./services/user.service');
 const { resetExpenses } = require('./services/expenses.service');
 
-const createServer = () => {
-  resetUsers();
-  resetExpenses();
+const createServer = async () => {
+  await resetUsers();
+  await resetExpenses();
 
   const app = express();
 
