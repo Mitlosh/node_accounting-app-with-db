@@ -96,7 +96,7 @@ const updateExpense = async (req, res) => {
 const deleteExpense = async (req, res) => {
   const { id } = req.params;
 
-  if (!expensesService.getExpense(+id) || Number.isNaN(+id)) {
+  if (!(await expensesService.getExpense(+id)) || Number.isNaN(+id)) {
     return res.status(404).send({ message: 'Expense not found' });
   }
 
